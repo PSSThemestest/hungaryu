@@ -6,11 +6,11 @@ import { FOOD_DICTIONARY, PHRASES, TRAVEL_INFO } from './dictionary.js';
 const state = {
   theme: 'dark',
   activeTab: 'calculator',
-  // Default exchange rate: 100 HUF = 1.28 RON
-  rate100HufToRon: 1.2800,
+  // Default exchange rate: 100 HUF = 1.50 RON
+  rate100HufToRon: 1.5000,
   lastUpdated: null,
   isManualRate: false,
-  manualRate: 1.2800,
+  manualRate: 1.5000,
   
   // Dictionary filtering
   dictSearchQuery: '',
