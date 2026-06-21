@@ -140,9 +140,11 @@ function switchTab(tabId) {
     if (viewId === `view-${tabId}`) {
       view.classList.add('active');
       
-      // Auto-focus search input if switching to translator
-      if (tabId === 'translator') {
+      // Auto-focus logic when switching tabs
+      if (tabId === 'menu') {
         setTimeout(() => elements.inputDictSearch.focus(), 150);
+      } else if (tabId === 'translator') {
+        setTimeout(() => elements.inputTranslate.focus(), 150);
       }
     } else {
       view.classList.remove('active');

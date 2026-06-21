@@ -132,8 +132,8 @@
       </div>
     </section>
 
-    <!-- ================= TRANSLATOR VIEW ================= -->
-    <section id="view-translator" class="tab-view">
+    <!-- ================= MENU VIEW ================= -->
+    <section id="view-menu" class="tab-view">
       <!-- Searchable Menu Dictionary -->
       <div class="card glass-card">
         <h2 class="view-title">Dicționar Culinar Offline</h2>
@@ -163,10 +163,13 @@
           <!-- Will be populated dynamically by app.js -->
         </div>
       </div>
+    </section>
 
+    <!-- ================= TRANSLATOR VIEW ================= -->
+    <section id="view-translator" class="tab-view">
       <!-- Online / Paste Text Translator -->
-      <div class="card glass-card margin-top">
-        <h3>Traducere Text Liber</h3>
+      <div class="card glass-card">
+        <h2 class="view-title">Traducător Text Liber</h2>
         <p class="section-subtitle">Copiază textul folosind camera telefonului (Live Text) și lipește-l aici:</p>
         
         <div class="online-translator">
@@ -245,10 +248,15 @@
       <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="9" y1="22" x2="9" y2="16"></line><line x1="15" y1="22" x2="15" y2="16"></line><line x1="9" y1="16" x2="15" y2="16"></line><path d="M16 8h-8V6h8v2z"></path><line x1="8" y1="12" x2="10" y2="12"></line><line x1="8" y1="16" x2="10" y2="16"></line><line x1="14" y1="12" x2="16" y2="12"></line><line x1="14" y1="16" x2="16" y2="16"></line></svg>
       <span>Calculator</span>
     </button>
-    <button class="nav-item" data-tab="translator">
+    <button class="nav-item" data-tab="menu">
       <!-- Dictionary/Book Icon -->
       <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-      <span>Meniu & Traduceri</span>
+      <span>Meniu</span>
+    </button>
+    <button class="nav-item" data-tab="translator">
+      <!-- Translation / Languages Icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+      <span>Traducător</span>
     </button>
     <button class="nav-item" data-tab="guide">
       <!-- Compass / Guide Icon -->
