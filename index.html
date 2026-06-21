@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ro" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Ungaria: Ghid & Conversie</title>
+  
+  <!-- SEO & PWA Meta Tags -->
+  <meta name="description" content="Companion offline pentru excursia în Ungaria: conversie HUF/RON și traducător de meniuri culinare.">
+  <meta name="theme-color" content="#121824">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="manifest" href="manifest.json">
+  
+  <link rel="stylesheet" href="styles.css">
+  <!-- Preload fonts if needed, or use beautiful system fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Background decorative elements for premium glassmorphism effect -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="brand">
+        <span class="flag-stripe red"></span>
+        <span class="flag-stripe white"></span>
+        <span class="flag-stripe green"></span>
+        <h1>Ungaria<span>Companion</span></h1>
+      </div>
+      <button id="theme-toggle" class="icon-btn" aria-label="Schimbă tema">
+        <!-- Sun icon -->
+        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <!-- Moon icon -->
+        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Views Container -->
+  <main class="content-area">
+    
+    <!-- ================= CALCULATOR VIEW ================= -->
+    <section id="view-calculator" class="tab-view active">
+      <div class="card glass-card">
+        <h2 class="view-title">Convertor Valutar</h2>
+        
+        <div class="converter-box">
+          <!-- HUF Input Group -->
+          <div class="input-group">
+            <label for="currency-huf">Forinți Ungurești (HUF)</label>
+            <div class="input-wrapper">
+              <input type="number" id="currency-huf" placeholder="0" inputmode="decimal" min="0">
+              <span class="currency-symbol huf-flag">Ft</span>
+            </div>
+            <div class="quick-helpers">
+              <button class="btn-quick-add" data-amount="1000">+1K</button>
+              <button class="btn-quick-add" data-amount="5000">+5K</button>
+              <button class="btn-quick-add" data-amount="10000">+10K</button>
+              <button class="btn-quick-add" data-amount="20000">+20K</button>
+            </div>
+          </div>
+
+          <!-- Swap arrow button in the middle -->
+          <div class="swap-divider">
+            <button id="btn-clear" class="btn-secondary-action">Șterge</button>
+          </div>
+
+          <!-- RON Input Group -->
+          <div class="input-group">
+            <label for="currency-ron">Lei Românești (RON)</label>
+            <div class="input-wrapper">
+              <input type="number" id="currency-ron" placeholder="0.00" inputmode="decimal" min="0">
+              <span class="currency-symbol ron-flag">RON</span>
+            </div>
+            <div class="quick-helpers">
+              <button class="btn-quick-add-ron" data-amount="10">+10</button>
+              <button class="btn-quick-add-ron" data-amount="50">+50</button>
+              <button class="btn-quick-add-ron" data-amount="100">+100</button>
+              <button class="btn-quick-add-ron" data-amount="200">+200</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exchange Rate Settings & Manual Override -->
+        <div class="rate-config">
+          <div class="rate-info-header">
+            <span>Curs de schimb: <strong id="current-rate-display">100 HUF = 1.28 RON</strong></span>
+            <button id="btn-toggle-rate-settings" class="icon-link-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            </button>
+          </div>
+          <div class="rate-status" id="rate-last-updated">Actualizat: Se încarcă...</div>
+          
+          <div id="rate-settings-panel" class="collapsible-panel hidden">
+            <div class="checkbox-group">
+              <input type="checkbox" id="chk-manual-rate">
+              <label for="chk-manual-rate">Setează cursul manual (offline)</label>
+            </div>
+            <div class="manual-rate-input-container hidden" id="manual-rate-container">
+              <label for="input-manual-rate">Câți RON costă 100 HUF?</label>
+              <div class="input-wrapper small">
+                <input type="number" id="input-manual-rate" value="1.2800" step="0.0001" min="0.1">
+                <span>RON</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Conversion Grid / Cheat Sheet -->
+      <div class="card glass-card margin-top">
+        <h3>Ghid Rapid Cumpărături (HUF → RON)</h3>
+        <div class="cheat-grid">
+          <div class="grid-header">Forinți (HUF)</div>
+          <div class="grid-header text-right">Lei (RON)</div>
+          
+          <div class="grid-row"><span>200 Ft <small>(Monedă mică / Apă)</small></span><span class="text-right bold" id="cheat-200">...</span></div>
+          <div class="grid-row"><span>500 Ft <small>(Cafea la filtru)</small></span><span class="text-right bold" id="cheat-500">...</span></div>
+          <div class="grid-row"><span>1 000 Ft <small>(Băutură / Desert)</small></span><span class="text-right bold" id="cheat-1000">...</span></div>
+          <div class="grid-row"><span>2 000 Ft <small>(Lángos complet / Bere)</small></span><span class="text-right bold" id="cheat-2000">...</span></div>
+          <div class="grid-row"><span>5 000 Ft <small>(Prânz ieftin / Intrare baie)</small></span><span class="text-right bold" id="cheat-5000">...</span></div>
+          <div class="grid-row"><span>10 000 Ft <small>(Masă restaurant 2 pers)</small></span><span class="text-right bold" id="cheat-10000">...</span></div>
+          <div class="grid-row"><span>20 000 Ft <small>(Cea mai mare bancnotă)</small></span><span class="text-right bold" id="cheat-20000">...</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TRANSLATOR VIEW ================= -->
+    <section id="view-translator" class="tab-view">
+      <!-- Searchable Menu Dictionary -->
+      <div class="card glass-card">
+        <h2 class="view-title">Dicționar Culinar Offline</h2>
+        <p class="section-subtitle">Caută mâncăruri, băuturi sau ingrediente din meniul maghiar:</p>
+        
+        <div class="search-container">
+          <div class="search-wrapper">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="dict-search" placeholder="Caută (ex: gulyas, csirke, bere...)">
+            <button id="btn-clear-search" class="clear-btn" aria-label="Resetează căutarea">&times;</button>
+          </div>
+        </div>
+
+        <!-- Category Filter Pills -->
+        <div class="category-filters">
+          <button class="pill active" data-cat="all">Toate</button>
+          <button class="pill" data-cat="supe-ciorbe">Supe</button>
+          <button class="pill" data-cat="feluri-principale">Mâncare</button>
+          <button class="pill" data-cat="aperitive-garnituri">Garnituri / Lángos</button>
+          <button class="pill" data-cat="deserturi">Deserturi</button>
+          <button class="pill" data-cat="bauturi">Băuturi</button>
+          <button class="pill" data-cat="ingrediente-altele">Ingrediente</button>
+        </div>
+
+        <!-- Dictionary Results -->
+        <div class="dict-results" id="dict-results-container">
+          <!-- Will be populated dynamically by app.js -->
+        </div>
+      </div>
+
+      <!-- Online / Paste Text Translator -->
+      <div class="card glass-card margin-top">
+        <h3>Traducere Text Liber</h3>
+        <p class="section-subtitle">Copiază textul folosind camera telefonului (Live Text) și lipește-l aici:</p>
+        
+        <div class="online-translator">
+          <div class="translation-controls">
+            <span class="lang-label font-medium" id="lbl-source-lang">Maghiară</span>
+            <button id="btn-swap-languages" class="icon-swap-btn" aria-label="Schimbă direcția">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="9" x2="19" y2="9"></line><polyline points="15 5 19 9 15 13"></polyline><line x1="19" y1="15" x2="5" y2="15"></line><polyline points="9 19 5 15 9 11"></polyline></svg>
+            </button>
+            <span class="lang-label font-medium" id="lbl-target-lang">Română</span>
+          </div>
+
+          <textarea id="translate-input" placeholder="Scrie sau lipește textul aici..." rows="3"></textarea>
+          
+          <div class="translator-buttons">
+            <button id="btn-paste-translate" class="btn-secondary">Lipește</button>
+            <button id="btn-run-translation" class="btn-primary flex-grow">Traduce online</button>
+          </div>
+
+          <!-- Translation Output -->
+          <div id="translation-output-wrapper" class="translation-output hidden">
+            <div class="output-header">
+              <span>Rezultat traducere:</span>
+              <button id="btn-copy-translation" class="copy-btn" aria-label="Copiază rezultatul">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              </button>
+            </div>
+            <div class="output-content" id="translation-output-text">...</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= GUIDE / INFO VIEW ================= -->
+    <section id="view-guide" class="tab-view">
+      
+      <!-- Phrases -->
+      <div class="card glass-card">
+        <h2 class="view-title">Expresii Utile (Ghid Audio-Fonic)</h2>
+        <p class="section-subtitle">Expresii de bază cu ghid de pronunție în limba română:</p>
+        
+        <div class="phrases-search">
+          <div class="search-wrapper">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="phrases-search-input" placeholder="Caută expresie sau traducere...">
+          </div>
+        </div>
+
+        <div class="phrases-list" id="phrases-container">
+          <!-- Will be populated dynamically by app.js -->
+        </div>
+      </div>
+
+      <!-- General Info Accordion -->
+      <div class="card glass-card margin-top">
+        <h3>Sfaturi pentru Călătorie</h3>
+        <div class="tips-accordion" id="tips-container">
+          <!-- Will be populated dynamically by app.js -->
+        </div>
+      </div>
+
+      <!-- Emergency Contacts -->
+      <div class="card glass-card margin-top danger-border">
+        <h3 class="danger-text">Contacte de Urgență</h3>
+        <div class="emergency-grid" id="emergency-container">
+          <!-- Will be populated dynamically by app.js -->
+        </div>
+      </div>
+      
+    </section>
+  </main>
+
+  <!-- Bottom Navigation Bar -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" data-tab="calculator">
+      <!-- Calculator / Money Icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="9" y1="22" x2="9" y2="16"></line><line x1="15" y1="22" x2="15" y2="16"></line><line x1="9" y1="16" x2="15" y2="16"></line><path d="M16 8h-8V6h8v2z"></path><line x1="8" y1="12" x2="10" y2="12"></line><line x1="8" y1="16" x2="10" y2="16"></line><line x1="14" y1="12" x2="16" y2="12"></line><line x1="14" y1="16" x2="16" y2="16"></line></svg>
+      <span>Calculator</span>
+    </button>
+    <button class="nav-item" data-tab="translator">
+      <!-- Dictionary/Book Icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+      <span>Meniu & Traduceri</span>
+    </button>
+    <button class="nav-item" data-tab="guide">
+      <!-- Compass / Guide Icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+      <span>Ghid & Urgențe</span>
+    </button>
+  </nav>
+
+  <!-- Core Scripts -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
