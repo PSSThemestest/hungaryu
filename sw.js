@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hungary-companion-v1';
+const CACHE_NAME = 'hungary-companion-v2';
 const ASSETS = [
   './',
   './index.html',
